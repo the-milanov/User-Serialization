@@ -4,6 +4,7 @@ using System.Windows;
 using User_Serialization.Commands;
 using User_Serialization.Factories;
 using User_Serialization.Mediators;
+using System.Linq;
 
 namespace User_Serialization.ViewModels
 {
@@ -15,7 +16,7 @@ namespace User_Serialization.ViewModels
         public GetUsersMediator GetUsers { get; set; }
         public FileViewModel()
         {
-            SaveCommand = new DelegateCommand(Save, null);
+            SaveCommand = new DelegateCommand(Save, CanSave);
         }
         private void Save(object o)
         {
@@ -29,6 +30,7 @@ namespace User_Serialization.ViewModels
             }
             else SaveFile();
         }
+        private bool CanSave(object o) => GetUsers.Users.Count() >= 1;
         private void SaveFile()
         {
             var serializer = UserSerializerFactory.Create(Path.GetExtension(saveFileName));
