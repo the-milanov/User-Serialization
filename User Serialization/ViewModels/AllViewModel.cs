@@ -14,13 +14,24 @@ namespace User_Serialization.ViewModels
     {
         public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
         private SendUserPubSub sendUserPubSub;
+        private GetUsersMediator getUsers;
+
+        public GetUsersMediator GetUsers
+        {
+            get { return getUsers; }
+            set
+            {
+                getUsers = value;
+                value.Users = Users;
+            }
+        }
 
         public SendUserPubSub SendUserPubSub
         {
             get { return sendUserPubSub; }
             set
             {
-                sendUserPubSub= value;
+                sendUserPubSub = value;
                 sendUserPubSub.Subscribe(Add);
             }
         }

@@ -11,11 +11,13 @@
         Title="MainWindow">
     <Window.Resources>
         <mediators:SendUserPubSub x:Key="mediatorSendUser"/>
+        <mediators:GetUsersMediator x:Key="mediatorGetUsers"/>
+
     </Window.Resources>
     <StackPanel>
         <views:FileView>
             <views:FileView.DataContext>
-                <viewmodels:FileViewModel/>
+                <viewmodels:FileViewModel GetUsers="{StaticResource mediatorGetUsers}"/>
             </views:FileView.DataContext>
         </views:FileView>
         <views:AddView>
@@ -25,7 +27,7 @@
         </views:AddView>
         <views:AllView>
             <views:AllView.DataContext>
-                <viewmodels:AllViewModel SendUserPubSub="{StaticResource mediatorSendUser}"/>
+                <viewmodels:AllViewModel GetUsers="{StaticResource mediatorGetUsers}" SendUserPubSub="{StaticResource mediatorSendUser}"/>
             </views:AllView.DataContext>
         </views:AllView>
     </StackPanel>

@@ -8,7 +8,7 @@ using User_Serialization.Models;
 
 namespace User_Serialization.Serializers
 {
-    interface IUserSerializer
+    public interface IUserSerializer
     {
         void Serialize(IEnumerable<User> users, string filePath);
         void Deserialize(FileStream fileStream);
