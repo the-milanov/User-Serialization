@@ -12,7 +12,7 @@ namespace User_Serialization.ViewModels
     {
         public DelegateCommand SaveCommand { get; set; }
         private string saveFileName;
-        private SaveFileDialog saveFileDialog = new SaveFileDialog();
+        private SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Data files (*.xml;*.json;*.bin)|*.xml;*.json;*.bin" };
         public GetUsersMediator GetUsers { get; set; }
         public FileViewModel()
         {
