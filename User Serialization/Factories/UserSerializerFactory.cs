@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using User_Serialization.Serializers;
+﻿using User_Serialization.Serializers;
 
 namespace User_Serialization.Factories
 {
     public static class UserSerializerFactory
     {
-        public static IUserSerializer GetUserSerializer(string extension)
+        public static IUserSerializer Create(string extension)
         {
-            switch (extension)
+            switch (extension.ToLower())
             {
                 case ".xml":
                     return new XmlUserSerializer();

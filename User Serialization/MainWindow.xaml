@@ -8,13 +8,12 @@
         xmlns:mediators="clr-namespace:User_Serialization.Mediators"
         xmlns:viewmodels="clr-namespace:User_Serialization.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow">
+        Title="User Serializer" Width="800" Height="500" WindowStyle="ToolWindow" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <mediators:SendUserPubSub x:Key="mediatorSendUser"/>
         <mediators:GetUsersMediator x:Key="mediatorGetUsers"/>
-
     </Window.Resources>
-    <StackPanel>
+    <StackPanel Margin="10">
         <views:FileView>
             <views:FileView.DataContext>
                 <viewmodels:FileViewModel GetUsers="{StaticResource mediatorGetUsers}"/>
