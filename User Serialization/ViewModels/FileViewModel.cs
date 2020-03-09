@@ -11,12 +11,15 @@ namespace User_Serialization.ViewModels
     public class FileViewModel
     {
         public DelegateCommand SaveCommand { get; set; }
+        public DelegateCommand SaveAsCommand { get; set; }
+
         private string saveFileName;
         private SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Data files (*.xml;*.json;*.bin)|*.xml;*.json;*.bin" };
         public GetUsersMediator GetUsers { get; set; }
         public FileViewModel()
         {
             SaveCommand = new DelegateCommand(Save, CanSave);
+            SaveAsCommand = new DelegateCommand(SaveAs, CanSave);
         }
         private void Save(object o)
         {
@@ -30,6 +33,14 @@ namespace User_Serialization.ViewModels
             }
             else SaveFile();
         }
+        private void SaveAs(object o)
+        {
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                saveFileName = saveFileDialog.FileName;
+                SaveFile();
+            }
+        }
         private bool CanSave(object o) => GetUsers.Users.Count() >= 1;
         private void SaveFile()
         {
@@ -40,7 +51,7 @@ namespace User_Serialization.ViewModels
             }
             else
             {
-                MessageBox.Show("Invalid file name.");
+                MessageBox.Show("Invalid save parameters.");
             }
         }
     }
