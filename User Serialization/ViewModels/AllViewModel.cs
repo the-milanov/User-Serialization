@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using User_Serialization.Mediators;
 using User_Serialization.Models;
 
@@ -7,6 +8,7 @@ namespace User_Serialization.ViewModels
     public class AllViewModel
     {
         public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
+        
         private GetUsersMediator getUsers;
         public GetUsersMediator GetUsers
         {

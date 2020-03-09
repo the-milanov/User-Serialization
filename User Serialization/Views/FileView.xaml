@@ -8,7 +8,7 @@
              mc:Ignorable="d">
     <Menu>
         <MenuItem Header="File">
-            <MenuItem Header="New"/>
+            <MenuItem Header="New" Command="{Binding NewCommand}"/>
             <Separator/>
             <MenuItem Header="Open"/>
             <MenuItem Header="Open Recent"/>

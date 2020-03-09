@@ -10,6 +10,7 @@ namespace User_Serialization.ViewModels
 {
     public class FileViewModel
     {
+        public DelegateCommand NewCommand { get; set; }
         public DelegateCommand SaveCommand { get; set; }
         public DelegateCommand SaveAsCommand { get; set; }
 
@@ -18,8 +19,14 @@ namespace User_Serialization.ViewModels
         public GetUsersMediator GetUsers { get; set; }
         public FileViewModel()
         {
+            NewCommand = new DelegateCommand(New, null);
             SaveCommand = new DelegateCommand(Save, CanSave);
             SaveAsCommand = new DelegateCommand(SaveAs, CanSave);
+        }
+        private void New(object o)
+        {
+            saveFileName = string.Empty;
+            GetUsers.Users.Clear();
         }
         private void Save(object o)
         {
