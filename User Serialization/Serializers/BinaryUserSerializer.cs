@@ -10,9 +10,18 @@ namespace User_Serialization.Serializers
 {
     public class BinaryUserSerializer : IUserSerializer
     {
-        public IEnumerable<User> Deserialize(string fileStream)
+        public IEnumerable<User> Deserialize(string filePath)
         {
-            throw new NotImplementedException();
+            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            using (BinaryReader br = new BinaryReader(fs, Encoding.UTF8))
+            {
+                var users = new List<User>();
+                while (fs.Position < fs.Length)
+                {
+                    users.Add(new User() { Id = new Guid(br.ReadBytes(16)), FirstName = br.ReadString(), LastName = br.ReadString(), Username = br.ReadString(), Email = br.ReadString() });
+                }
+                return users;
+            }
         }
 
         public void Serialize(IEnumerable<User> users, string filePath)
