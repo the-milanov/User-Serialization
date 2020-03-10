@@ -12,9 +12,13 @@ namespace User_Serialization.Serializers
 {
     public class JsonUserSerializer : IUserSerializer
     {
-        public void Deserialize(FileStream fileStream)
+        public IEnumerable<User> Deserialize(string filePath)
         {
-            throw new NotImplementedException();
+            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            using (StreamReader sr = new StreamReader(fs))
+            {
+                return JsonConvert.DeserializeObject<List<User>>(sr.ReadToEnd());
+            }
         }
 
         public void Serialize(IEnumerable<User> users, string filePath)
