@@ -10,7 +10,7 @@ namespace User_Serialization.Serializers
 {
     public class BinaryUserSerializer : IUserSerializer
     {
-        public void Deserialize(FileStream fileStream)
+        public IEnumerable<User> Deserialize(string fileStream)
         {
             throw new NotImplementedException();
         }

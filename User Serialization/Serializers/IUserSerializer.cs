@@ -7,7 +7,6 @@ namespace User_Serialization.Serializers
     public interface IUserSerializer
     {
         void Serialize(IEnumerable<User> users, string filePath);
-        void Deserialize(FileStream fileStream);
-
+        IEnumerable<User> Deserialize(string filePath);
     }
 }

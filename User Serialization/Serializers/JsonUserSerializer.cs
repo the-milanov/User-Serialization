@@ -12,7 +12,7 @@ namespace User_Serialization.Serializers
 {
     public class JsonUserSerializer : IUserSerializer
     {
-        public void Deserialize(FileStream fileStream)
+        public IEnumerable<User> Deserialize(string filePath)
         {
             throw new NotImplementedException();
         }
