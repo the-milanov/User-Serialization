@@ -12,6 +12,8 @@ namespace User_Serialization.Factories
                     return new XmlUserSerializer();
                 case ".bin":
                     return new BinaryUserSerializer();
+                case ".json":
+                    return new JsonUserSerializer();
                 default:
                     return null;
             }
