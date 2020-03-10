@@ -64,6 +64,7 @@
     <Compile Include="Factories\UserSerializerFactory.cs" />
     <Compile Include="Mediators\GetUsersMediator.cs" />
     <Compile Include="Mediators\SendUserPubSub.cs" />
+    <Compile Include="Serializers\BinaryUserSerializer.cs" />
     <Compile Include="Serializers\IUserSerializer.cs" />
     <Compile Include="Serializers\XmlUserSerializer.cs" />
     <Compile Include="ViewModels\AllViewModel.cs" />
