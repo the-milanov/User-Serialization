@@ -10,6 +10,10 @@ namespace User_Serialization.Factories
             {
                 case ".xml":
                     return new XmlUserSerializer();
+                case ".bin":
+                    return new BinaryUserSerializer();
+                case ".json":
+                    return new JsonUserSerializer();
                 default:
                     return null;
             }
