@@ -18,18 +18,57 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Content="First Name:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding NewUser.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="3" MaxLength="50"/>
-        <Label Content="Last Name:" Grid.Column="0" Grid.Row="1"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NewUser.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="3" MaxLength="50"/>
-        <Label Content="Username:" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding NewUser.Username, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="3" MaxLength="50"/>
-        <Label Content="Email:" Grid.Column="0" Grid.Row="3"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding NewUser.Email, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="3" MaxLength="100"/>
-        <Label Grid.Column="0" Grid.Row="4" Content="{Binding NewUser.Id}"/>
-        <Button Grid.Column="1" Grid.Row="4" Content="New Id" Command="{Binding NewIdCommand}" HorizontalAlignment="Right" Margin="5" Padding="3"/>
-        <Label Grid.Column="0" Grid.Row="5" Content="  "/>
-        <Button Grid.Column="1" Grid.Row="5" Content="Add User" Command="{Binding AddCommand}" HorizontalAlignment="Right" Margin="5" Padding="3"/>
+        <TextBox x:Name="tbFirstName" Grid.Column="1" Grid.Row="0" Text="{Binding NewUser.FirstName, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}" Margin="5" Padding="3" MaxLength="50"/>
+        <ItemsControl IsTabStop="False" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding ElementName=tbFirstName, Path=(Validation.Errors)}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label Foreground="Red" IsTabStop="False" Content="{Binding Path=ErrorContent}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Label Content="Last Name:" Grid.Column="0" Grid.Row="2"/>
+        <TextBox x:Name="tbLastName" Grid.Column="1" Grid.Row="2" Text="{Binding NewUser.LastName, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}" Margin="5" Padding="3" MaxLength="50"/>
+        <ItemsControl IsTabStop="False" Grid.Column="0" Grid.Row="3" ItemsSource="{Binding ElementName=tbLastName, Path=(Validation.Errors)}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label Foreground="Red" IsTabStop="False" Content="{Binding Path=ErrorContent}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Label Content="Username:" Grid.Column="0" Grid.Row="4"/>
+        <TextBox x:Name="tbUsername"  Grid.Column="1" Grid.Row="4" Text="{Binding NewUser.Username, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}" Margin="5" Padding="3" MaxLength="50"/>
+        <ItemsControl IsTabStop="False" Grid.Column="0" Grid.Row="5" ItemsSource="{Binding ElementName=tbUsername, Path=(Validation.Errors)}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label Foreground="Red" IsTabStop="False" Content="{Binding Path=ErrorContent}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Label Content="Email:" Grid.Column="0" Grid.Row="6"/>
+        <TextBox x:Name="tbEmail" Grid.Column="1" Grid.Row="6" Text="{Binding NewUser.Email, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}" Margin="5" Padding="3" MaxLength="100"/>
+        <ItemsControl IsTabStop="False" Grid.Column="0" Grid.Row="7" ItemsSource="{Binding ElementName=tbEmail, Path=(Validation.Errors)}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label Foreground="Red" IsTabStop="False" Content="{Binding Path=ErrorContent}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Label IsTabStop="False" Grid.Column="0" Grid.Row="8">
+            <ContentControl>
+                <WrapPanel>
+                    <TextBlock Text="ID: "/>
+                    <TextBlock Text="{Binding NewUser.Id}"/>
+                </WrapPanel>
+            </ContentControl>
+        </Label>
+        <Button Grid.Column="1" Grid.Row="8" Content="New Id" Command="{Binding NewIdCommand}" HorizontalAlignment="Right" Margin="5" Padding="3"/>
+        <Label Grid.Column="0" Grid.Row="9" Foreground="Red" Content="*All field are required"/>
+        <Button Grid.Column="1" Grid.Row="9" Content="Add User" Command="{Binding AddCommand}" HorizontalAlignment="Right" Margin="5" Padding="3"/>
     </Grid>
 </UserControl>

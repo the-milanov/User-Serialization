@@ -27,19 +27,23 @@ namespace User_Serialization.ViewModels
         public AddViewModel()
         {
             NewUser = new User();
-            AddCommand = new DelegateCommand(Add, null);
             NewIdCommand = new DelegateCommand(NewId, null);
+            AddCommand = new DelegateCommand(Add, CanAdd);
         }
 
 
+        private void NewId(object o)
+        {
+            NewUser.Id = Guid.NewGuid();
+        }
         private void Add(object o)
         {
             SendUserPubSub.Publish(NewUser);
             NewUser = new User();
         }
-        private void NewId(object o)
+        private bool CanAdd(object arg)
         {
-            NewUser.Id = Guid.NewGuid();
+            return !NewUser.HasErrors && NewUser.FirstName != null && NewUser.LastName != null && NewUser.Username != null && NewUser.Email != null;
         }
         private void BindProperty<T>(ref T property, T value, [CallerMemberName]string propertyName = null)
         {
