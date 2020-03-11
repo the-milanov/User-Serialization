@@ -28,7 +28,7 @@ namespace User_Serialization.ViewModels
         {
             NewUser = new User();
             NewIdCommand = new DelegateCommand(NewId, null);
-            AddCommand = new DelegateCommand(Add, CanAdd);
+            AddCommand = new DelegateCommand(Add, null);
         }
 
 

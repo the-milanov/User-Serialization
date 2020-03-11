@@ -8,26 +8,31 @@
         xmlns:mediators="clr-namespace:User_Serialization.Mediators"
         xmlns:viewmodels="clr-namespace:User_Serialization.ViewModels"
         mc:Ignorable="d"
-        Title="User Serializer" Width="800" Height="500" WindowStyle="ToolWindow" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="User Serializer" Width="800" Height="550" WindowStyle="ToolWindow" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <mediators:SendUserPubSub x:Key="mediatorSendUser"/>
         <mediators:GetUsersMediator x:Key="mediatorGetUsers"/>
     </Window.Resources>
-    <StackPanel Margin="10">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <views:FileView>
             <views:FileView.DataContext>
                 <viewmodels:FileViewModel GetUsers="{StaticResource mediatorGetUsers}"/>
             </views:FileView.DataContext>
         </views:FileView>
-        <views:AddView>
+        <views:AddView Grid.Row="1">
             <views:AddView.DataContext>
                 <viewmodels:AddViewModel SendUserPubSub="{StaticResource mediatorSendUser}"/>
             </views:AddView.DataContext>
         </views:AddView>
-        <views:AllView>
+        <views:AllView  Grid.Row="2">
             <views:AllView.DataContext>
                 <viewmodels:AllViewModel GetUsers="{StaticResource mediatorGetUsers}" SendUserPubSub="{StaticResource mediatorSendUser}"/>
             </views:AllView.DataContext>
         </views:AllView>
-    </StackPanel>
+    </Grid>
 </Window>
