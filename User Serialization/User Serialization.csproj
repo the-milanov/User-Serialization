@@ -73,10 +73,14 @@
     <Compile Include="Serializers\JsonUserSerializer.cs" />
     <Compile Include="Serializers\XmlUserSerializer.cs" />
     <Compile Include="ViewModels\AllViewModel.cs" />
+    <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\FileViewModel.cs" />
     <Compile Include="ViewModels\AddViewModel.cs" />
     <Compile Include="Views\AllView.xaml.cs">
       <DependentUpon>AllView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FileView.xaml.cs">
       <DependentUpon>FileView.xaml</DependentUpon>
@@ -97,6 +101,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AllView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
