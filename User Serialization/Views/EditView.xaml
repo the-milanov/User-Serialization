@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:User_Serialization.Views"
         mc:Ignorable="d"
-        Title="EditView" SizeToContent="Height" Width="500" WindowStartupLocation="CenterScreen">
+        Title="Edit User" SizeToContent="Height" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
