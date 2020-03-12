@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:User_Serialization.Views"
              xmlns:viewmodels="clr-namespace:User_Serialization.ViewModels"
              mc:Ignorable="d">
-    <Menu>
-        <MenuItem Header="File">
+    <Menu Margin="0 0 5 0">
+        <MenuItem Header="_File">
             <MenuItem Header="New" Command="{Binding NewCommand}"/>
             <Separator/>
             <MenuItem Header="Open" Command="{Binding OpenCommand}"/>

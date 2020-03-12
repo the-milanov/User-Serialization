@@ -15,7 +15,6 @@ namespace User_Serialization.ViewModels
         public DelegateCommand OpenCommand { get; set; }
         public DelegateCommand SaveCommand { get; set; }
         public DelegateCommand SaveAsCommand { get; set; }
-
         private string saveFileName, openFileName;
         private OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Data files (*.xml;*.json;*.bin)|*.xml;*.json;*.bin" };
         private SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Data files (*.xml;*.json;*.bin)|*.xml;*.json;*.bin" };
