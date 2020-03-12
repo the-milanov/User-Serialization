@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define User Serialization_TargetDir=$(var.User Serialization.TargetDir)?>
+	<Product Id="*" Name="SetupUserSerialization" Language="1033" Version="1.0.0.0" Manufacturer="Mikanaaa" UpgradeCode="4de3e44d-814a-4912-b025-7839942ce823">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="SetupUserSerialization" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SetupUserSerialization" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="User_Serialization.exe" Guid="3f87c70e-9912-49cd-8118-7669f406e770">
+			  <File Id="User_Serialization.exe" Name="User Serialization.exe" Source="$(var.User Serialization_TargetDir)User Serialization.exe" />
+			</Component>
+			<Component Id="User_Serialization.exe.config" Guid="1e4e6c96-bd23-4907-9bc5-1611c089255f">
+			  <File Id="User_Serialization.exe.config" Name="User Serialization.exe.config" Source="$(var.User Serialization_TargetDir)User Serialization.exe.config" />
+			</Component>
+			<Component Id="Newtonsoft.Json.dll" Guid="28924ada-3eac-488f-95d3-810143830de9">
+			  <File Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Source="$(var.User Serialization_TargetDir)Newtonsoft.Json.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
