@@ -3,9 +3,10 @@
   <?define User Serialization_TargetDir=$(var.User Serialization.TargetDir)?>
   <Product Id="9412c4b3-5632-4968-8ad7-440f79d18cb0" Name="User Serialization" Language="1033" Version="1.0.0.0" Manufacturer="Mikanaaa" UpgradeCode="4de3e44d-814a-4912-b025-7839942ce823">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
-
+    <UIRef Id="WixUI_Minimal"/>
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Media Id="1" Cabinet="cab1.cab"  EmbedCab="yes" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\License.rtf"/>
     <Feature Id="ProductFeature" Title="User Serialization" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
