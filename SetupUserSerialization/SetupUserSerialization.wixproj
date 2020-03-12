@@ -32,6 +32,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="License.rtf" />
     <Content Include="SetupUserSerialization.wax" />
   </ItemGroup>
   <ItemGroup>
